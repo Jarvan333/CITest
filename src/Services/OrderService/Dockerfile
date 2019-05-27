@@ -1,11 +1,11 @@
-FROM microsoft/dotnet:2.2-sdk as publish
+FROM microsoft/dotnet:2.2-sdk AS publish
 WORKDIR /src
 COPY . .
 RUN dotnet restore "OrderService.csproj"
-RUN dotnet build "OrderService.csproj" -c Release
+RUN dotnet build "OrderService.csproj" -c Release -o /build
 RUN dotnet publish "OrderService.csproj" -c Release -o /publish
 
-FROM microsoft/dotnet:2.2-aspnetcore-runtime as final
+FROM microsoft/dotnet:2.2-aspnetcore-runtime AS final
 WORKDIR /app
 EXPOSE 5000
 COPY --from=publish /publish .
