@@ -7,6 +7,6 @@ RUN dotnet publish "OrderService.csproj" -c Release -o /publish
 
 FROM microsoft/dotnet:2.2-aspnetcore-runtime AS final
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 80
 COPY --from=publish /publish .
 ENTRYPOINT ["dotnet","OrderService.dll"]
