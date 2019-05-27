@@ -5,15 +5,15 @@ services:
     image: user:latest
     build:
       context: ../
-      dockerfile: ../src/Services/UserService/Dockerfile
+      dockerfile: src/Services/UserService/Dockerfile
     ports:
       - "5000:80"
       
   order:
     image: order:latest
     build:
-      context: .
-      dockerfile: ../src/Services/OrderService/Dockerfile
+      context: ../
+      dockerfile: src/Services/OrderService/Dockerfile
     ports:
       - "5001:80"
     depends_on:
