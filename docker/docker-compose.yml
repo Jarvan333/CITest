@@ -1,12 +1,14 @@
 version: "3.7"
 services:
   user:
+    image: user:latest
     build:
       context: .
       dockerfile: ../src/Services/UserService/Dockerfile
     ports:
       - "5000:80"
   order:
+    image: order:latest
     build:
       context: .
       dockerfile: ../src/Services/OrderService/Dockerfile
