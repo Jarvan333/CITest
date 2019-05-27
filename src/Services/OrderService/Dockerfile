@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.2-sdk AS publish
 WORKDIR /src
-COPY ../src/Services/OrderService .
+COPY src/Services/OrderService .
 RUN dotnet restore "OrderService.csproj"
 RUN dotnet build "OrderService.csproj" -c Release --no-restore -o /build
 RUN dotnet publish "OrderService.csproj" -c Release --no-restore -o /publish

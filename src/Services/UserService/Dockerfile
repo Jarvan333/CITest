@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.2-sdk AS publish
 WORKDIR /src
-COPY ../src/Services/UserService .
+COPY src/Services/UserService .
 RUN dotnet restore "UserService.csproj"
 RUN dotnet build "UserService.csproj" -c Release --no-restore -o /build
 RUN dotnet publish "UserService.csproj" -c Release --no-restore -o /publish
