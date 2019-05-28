@@ -14,7 +14,7 @@ namespace OrderService.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "orderValue1" };
+            return new string[] { "orderValue" };
         }
 
         // GET api/values/5
