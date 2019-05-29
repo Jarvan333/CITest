@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +15,7 @@ namespace OrderService.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "orderValue" };
+            return new string[] { "orderValue", Dns.GetHostName() };
         }
 
         // GET api/values/5
