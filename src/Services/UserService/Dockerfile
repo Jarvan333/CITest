@@ -1,7 +1,5 @@
 
 FROM microsoft/dotnet:2.2-sdk AS publish
-ARG env
-RUN echo "${env}"
 WORKDIR /src
 COPY src/Services/UserService .
 RUN dotnet restore "UserService.csproj"
@@ -12,4 +10,7 @@ FROM microsoft/dotnet:2.2-aspnetcore-runtime AS final
 WORKDIR /app
 EXPOSE 80
 COPY --from=publish /publish .
-ENTRYPOINT ["dotnet","UserService.dll","${env}"]
+ARG env
+RUN echo "${env}"
+ENV env=$env
+ENTRYPOINT ["dotnet","UserService.dll",$env]
