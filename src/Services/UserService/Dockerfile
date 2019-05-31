@@ -1,6 +1,6 @@
-ARG env
-RUN echo $env
-
+#ARG env
+#RUN echo $env
+#
 FROM microsoft/dotnet:2.2-sdk AS publish
 WORKDIR /src
 COPY src/Services/UserService .
