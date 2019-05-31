@@ -13,10 +13,11 @@ namespace UserService
 {
     public class Program
     {
+        public static string ArgString { get; set; }
+
         public static void Main(string[] args)
         {
-            Console.WriteLine(JsonConvert.SerializeObject(args));
-            Console.WriteLine("ok");
+            ArgString = $"args:{JsonConvert.SerializeObject(args)}";
             CreateWebHostBuilder(args).Build().Run();
         }
 
