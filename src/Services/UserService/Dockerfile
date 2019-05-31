@@ -1,7 +1,7 @@
-ARG env
-RUN echo "${env}"
 
 FROM microsoft/dotnet:2.2-sdk AS publish
+ARG env
+RUN echo "${env}"
 WORKDIR /src
 COPY src/Services/UserService .
 RUN dotnet restore "UserService.csproj"
