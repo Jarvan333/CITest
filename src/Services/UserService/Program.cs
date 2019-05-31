@@ -7,17 +7,24 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
-namespace UserService {
-    public class Program {
-        public static void Main(string[] args) {
+namespace UserService
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine(JsonConvert.SerializeObject(args));
+            Console.WriteLine("ok");
             CreateWebHostBuilder(args).Build().Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel(options => {
-                    options.ConfigureEndpointDefaults(x => x.IPEndPoint.Port = 90);
+                .UseKestrel(x =>
+                {
+                    x.ListenLocalhost(90);
                 })
                 .UseStartup<Startup>();
     }
