@@ -10,7 +10,7 @@ FROM microsoft/dotnet:2.2-aspnetcore-runtime AS final
 WORKDIR /app
 EXPOSE 80
 COPY --from=publish /publish .
-ARG env
+ARG env = test
 RUN echo "${env}"
-ENV env1=$env
-ENTRYPOINT ["dotnet","UserService.dll",$env1]
+ENV env=$env
+ENTRYPOINT ["dotnet","UserService.dll",$env]
