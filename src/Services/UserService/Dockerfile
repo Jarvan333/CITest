@@ -11,6 +11,6 @@ WORKDIR /app
 EXPOSE 80
 COPY --from=publish /publish .
 ARG env
-RUN echo ${env}
+RUN echo "${env}"
 ENV env1=$env
 ENTRYPOINT ["dotnet","UserService.dll",$env1]
