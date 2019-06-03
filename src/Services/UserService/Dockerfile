@@ -11,5 +11,7 @@ WORKDIR /app
 EXPOSE 80
 COPY --from=publish /publish .
 ARG env
+ARG redis
 ENV env=$env
-ENTRYPOINT dotnet UserService.dll "$env"
+ENV redis=$redis
+ENTRYPOINT dotnet UserService.dll "$env" "$redis"
