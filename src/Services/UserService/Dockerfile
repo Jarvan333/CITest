@@ -3,7 +3,7 @@ ARG env
 ARG redis
 ARG config="Release"
 RUN echo "${config}"
-RUN if["${env}"=="Development"];then $config="Debug";fi
+RUN if["${env}"="Development"];then $config="Debug";else echo "not development";fi
 RUN echo "${config}"
 ENV env=$env
 ENV redis=$redis
