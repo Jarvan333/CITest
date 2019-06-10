@@ -2,9 +2,6 @@ FROM microsoft/dotnet:2.2-sdk AS publish
 ARG env
 ARG redis
 ARG config="Release"
-RUN echo "${config}"
-RUN if["$env"='Development'];then echo "yes it is";else echo "not development";fi
-RUN echo "${config}"
 ENV env=$env
 ENV redis=$redis
 
