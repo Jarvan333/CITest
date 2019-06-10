@@ -1,3 +1,4 @@
+FROM microsoft/dotnet:2.2-sdk AS publish
 ARG env
 ARG redis
 ARG config="Release"
@@ -7,7 +8,6 @@ RUN echo "${config}"
 ENV env=$env
 ENV redis=$redis
 
-FROM microsoft/dotnet:2.2-sdk AS publish
 WORKDIR /src
 COPY src/Services/UserService .
 RUN dotnet restore "UserService.csproj"
