@@ -9,7 +9,7 @@ RUN dotnet publish "UserService.csproj" -c ${config} --no-restore -o /publish
 
 FROM microsoft/dotnet:2.2-aspnetcore-runtime AS final
 WORKDIR /app
-EXPOSE 80
+EXPOSE 1000
 COPY --from=publish /publish .
 ARG env
 ARG redis
