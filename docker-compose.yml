@@ -2,6 +2,8 @@ version: "3.7"
 services:
 
   user:
+    environment:
+        --port:1000
     image: user:latest
     build:
       context: .
@@ -9,7 +11,9 @@ services:
       args:
         - env:${env}
         - redis:${redis}
-    
+    ports:
+      - "${port}"
+      
   order:
     image: order:latest
     build:
