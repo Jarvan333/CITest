@@ -12,7 +12,7 @@ services:
         - env:${env}
         - redis:${redis}
     ports:
-      - "${port}"
+      - ${port}
       
   order:
     image: order:latest
