@@ -3,7 +3,7 @@ services:
 
   user:
     environment:
-        - port=1000
+        - port="1000"
     image: user:latest
     build:
       context: .
@@ -12,7 +12,7 @@ services:
         - env:${env}
         - redis:${redis}
     ports:
-      - ${port}
+      - "${port}"
       
   order:
     image: order:latest
