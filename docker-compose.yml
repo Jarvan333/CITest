@@ -10,7 +10,7 @@ services:
         - env:${env}
         - redis:${redis}
     ports:
-      - "${echo '15000'}:1500"
+      - "1500:1500"
     restart: always
     
   order:
