@@ -25,7 +25,7 @@ namespace UserService
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel(x =>
                 {
-                    x.ListenAnyIP(80);
+                    x.ListenAnyIP(1500);
                     //x.ListenLocalhost(80);
                 })
                 .UseStartup<Startup>();
