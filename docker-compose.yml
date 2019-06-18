@@ -10,7 +10,7 @@ services:
         - env:${env}
         - redis:${redis}
     ports:
-      - "1000:1000"
+      - "1000:1500"
       
   order:
     image: order:latest
