@@ -11,7 +11,8 @@ services:
         - redis:${redis}
     ports:
       - "1500:1500"
-      
+    restart: always
+    
   order:
     image: order:latest
     build:
@@ -19,5 +20,6 @@ services:
       dockerfile: src/Services/OrderService/Dockerfile
     ports:
       - "5001:80"
+    restart: always
     depends_on:
       - user
