@@ -15,4 +15,4 @@ ARG env
 ARG redis
 ENV env=$env
 ENV redis=$redis
-ENTRYPOINT dotnet UserService.dll "$env" "$redis"
+ENTRYPOINT dotnet UserService.dll "--environment=$env" "--redis=$redis"
