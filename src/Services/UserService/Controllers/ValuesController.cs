@@ -15,7 +15,7 @@ namespace UserService.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "userValueAAAA", Dns.GetHostName() };
+            return new string[] { "userValue", Dns.GetHostName() };
         }
 
         // GET api/values/5
