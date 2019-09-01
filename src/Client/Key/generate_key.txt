@@ -1,0 +1,5 @@
+(1)open openssl ctl
+(2)generate keys
+req -newkey rsa:2048 -nodes -keyout F:\Projects\Local\Notes\Src\Services\IdentityService\IdentityService.WebApi\Key\identity.key -x509 -out F:\Projects\Local\Notes\Src\Services\IdentityService\IdentityService.WebApi\Key\identity.cer
+(3)export
+pkcs12 -export -in F:\Projects\Local\Notes\Src\Services\IdentityService\IdentityService.WebApi\Key\identity.cer -inkey F:\Projects\Local\Notes\Src\Services\IdentityService\IdentityService.WebApi\Key\identity.key -out F:\Projects\Local\Notes\Src\Services\IdentityService\IdentityService.WebApi\Key\identity.pfx

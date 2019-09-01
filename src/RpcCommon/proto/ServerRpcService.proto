@@ -1,0 +1,24 @@
+﻿syntax = "proto3";
+import "proto/CommonMessage.proto";
+
+service ServerRpcService{
+	rpc GetServerInfo(ServerRpcRequest) returns(ServerReply){}
+}
+
+message ServerRpcRequest{
+	int32 Id=2;
+}
+
+message ServerReply{
+	Header Header=1;
+	ServerInfo Data=2;
+}
+
+message ServerInfo{
+	string Name=1;
+	repeated CpuInfo Info=2;
+}
+
+message CpuInfo{
+	int32 Count=1;
+}

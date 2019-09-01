@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+import "proto/CommonMessage.proto";
+
+service ClientRpcService{
+	rpc GetClientInfo(ClientRpcRequest) returns(ClientReply){}
+}
+
+message ClientRpcRequest{
+	int32 Id=1;
+}
+
+message ClientReply{
+	Header Header=1;
+}
