@@ -23,7 +23,7 @@ namespace UserService {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UserDbContext>(x=>x.UseSqlServer("Data Source=testsqlserver,5433;database=Blog.AdminWebDB;User=sa;Password=Admin123"));
+            services.AddDbContext<UserDbContext>(x=>x.UseSqlServer("Data Source=.,1433;database=Blog.AdminWebDB;User=sa;Password=admin123"));
             services.AddCors(x =>
             {
                 x.AddDefaultPolicy(y =>
