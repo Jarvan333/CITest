@@ -35,7 +35,9 @@ namespace UserService
                     options.HostName = "localhost";
                     options.UserName = "admin";
                     options.Password = "admin123";
+                    options.ExchangeName = "citest.topic";
                 });
+                x.UseDashboard();
             });
             services.AddCors(x =>
             {

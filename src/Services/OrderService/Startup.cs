@@ -25,7 +25,7 @@ namespace OrderService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ICapEventsHandler, CapEventsHandler>();
+            services.AddTransient<CapEventsHandler>();
             services.AddCap(x =>
             {
                 x.UseSqlServer("Data Source=.,1433;database=CITEST.OrderDB;User=sa;Password=admin123");
@@ -34,7 +34,9 @@ namespace OrderService
                     options.HostName = "localhost";
                     options.UserName = "admin";
                     options.Password = "admin123";
+                    options.ExchangeName = "citest.topic";
                 });
+                x.UseDashboard();
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
