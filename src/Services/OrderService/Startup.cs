@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,6 +38,7 @@ namespace OrderService
                     options.ExchangeName = "citest.topic";
                 });
                 x.UseDashboard();
+                x.DefaultGroup = $"{Assembly.GetExecutingAssembly().GetName().Name}.EventHandlers";
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
