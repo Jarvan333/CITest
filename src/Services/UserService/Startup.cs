@@ -12,9 +12,12 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using UserService.Data;
 
-namespace UserService {
-    public class Startup {
-        public Startup(IConfiguration configuration) {
+namespace UserService
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
             Configuration = configuration;
         }
 
@@ -23,7 +26,17 @@ namespace UserService {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UserDbContext>(x=>x.UseSqlServer("Data Source=.,1433;database=Blog.AdminWebDB;User=sa;Password=admin123"));
+            services.AddDbContext<UserDbContext>(x => x.UseSqlServer("Data Source=.,1433;database=CITEST.UserDB;User=sa;Password=admin123"));
+            services.AddCap(x =>
+            {
+                x.UseEntityFramework<UserDbContext>();
+                x.UseRabbitMQ(options =>
+                {
+                    options.HostName = "localhost";
+                    options.UserName = "admin";
+                    options.Password = "admin123";
+                });
+            });
             services.AddCors(x =>
             {
                 x.AddDefaultPolicy(y =>
@@ -33,13 +46,15 @@ namespace UserService {
                     y.AllowAnyHeader();
                 });
             });
-            services.AddMvc().AddJsonOptions(opt => {
+            services.AddMvc().AddJsonOptions(opt =>
+            {
                 opt.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

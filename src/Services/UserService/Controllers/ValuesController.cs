@@ -3,21 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using DotNetCore.CAP;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using ServiceCommon;
 
 namespace UserService.Controllers {
     [Route("api/[controller]")]
     [ApiController]
     public class ValuesController : ControllerBase {
         private readonly IHostingEnvironment _env;
+        private readonly ICapPublisher _capPublisher;
 
-        public ValuesController(IHostingEnvironment env) {
+        public ValuesController(IHostingEnvironment env,ICapPublisher capPublisher)
+        {
             _env = env;
+            _capPublisher = capPublisher;
         }
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get() {
+            _capPublisher.Publish<CapEvents>("aa",new CapEvents(){Id = Guid.NewGuid(),Name = "From user service event"});
             return new string[] { "userValue", Dns.GetHostName(), _env.EnvironmentName };
         }
 
