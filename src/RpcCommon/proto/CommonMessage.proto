@@ -1,6 +1,0 @@
-﻿syntax = "proto3";
-
-message Header{
-	string Description=1;
-	bool Success=2;
-}

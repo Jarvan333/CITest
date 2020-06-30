@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RpcCommon\RpcCommon.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Key\identity.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
